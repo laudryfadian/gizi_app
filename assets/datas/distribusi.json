@@ -1,0 +1,18 @@
+[
+  {
+    "city": "Malang",
+    "district": [
+      "Lowokwaru",
+      "Dau",
+      "Klojen"
+    ] 
+  },
+  {
+    "city": "Kediri",
+    "district": [
+      "Plosoklaten",
+      "Gurah",
+      "Pare"
+    ] 
+  }
+]
