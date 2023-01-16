@@ -42,7 +42,7 @@ class _InitialMomScreenState extends State<InitialMomScreen> {
                   child: TextFormField(
                     controller: nameController,
                     decoration: const InputDecoration(
-                      hintText: "Mom Name",
+                      hintText: "Mom",
                       labelStyle: TextStyle(
                         color: Colors.blueGrey,
                       ),
