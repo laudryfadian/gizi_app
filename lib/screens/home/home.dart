@@ -58,7 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     width: double.infinity,
                     child: Text(
-                      "Halo, Bu $momName",
+                      "Selamat Datang",
                       style: TextStyle(
                           fontSize: 22,
                           color: Colors.white,

@@ -44,7 +44,7 @@ class _IndexMasaTubuhScreenState extends State<IndexMasaTubuhScreen> {
                         color: Colors.blueGrey,
                       ),
                     ),
-                    helperText: "Tb *Cm",
+                    helperText: "Tb *M",
                   ),
                   onChanged: (value) {},
                 ),
@@ -110,9 +110,9 @@ class _IndexMasaTubuhScreenState extends State<IndexMasaTubuhScreen> {
       double tinggi = double.parse(tinggiController.text);
       double berat = double.parse(beratController.text);
 
-      var toMeter = tinggi / 100;
+      // var toMeter = tinggi / 100;
 
-      var result = berat / toMeter;
+      var result = berat / tinggi;
 
       print(result);
       if (result < 18.5) {

@@ -2,6 +2,7 @@
 
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:gizi_app/screens/distribusi/payment_distribusi.dart';
 
 class CekDistribusi extends StatefulWidget {
   const CekDistribusi({Key? key, required this.tujuan}) : super(key: key);
@@ -63,9 +64,10 @@ class _CekDistribusiState extends State<CekDistribusi> {
               SizedBox(height: 10),
               ElevatedButton(
                 onPressed: () {
-                  dialogKirim(context, barangController.text);
+                  kirim(context);
+                  // dialogKirim(context, barangController.text);
                 },
-                child: const Text("Kirim"),
+                child: const Text("Bayar"),
               ),
             ],
           ),
@@ -74,26 +76,46 @@ class _CekDistribusiState extends State<CekDistribusi> {
     );
   }
 
-  dialogKirim(BuildContext context, String barang) {
-    if (barang == null || barang == "") {
+  kirim(BuildContext context) {
+    if (barangController.text.isEmpty) {
       AwesomeDialog(
         context: context,
         dialogType: DialogType.error,
         animType: AnimType.rightSlide,
-        title: 'Input Gagal',
+        title: 'Harap mengisi barang',
         btnCancelOnPress: () {},
         // btnOkOnPress: () {},
       ).show();
     } else {
-      AwesomeDialog(
-        context: context,
-        dialogType: DialogType.success,
-        animType: AnimType.rightSlide,
-        title: 'Terima Kasih',
-        desc: barang + " akan segera di proses",
-        // btnCancelOnPress: () {},
-        btnOkOnPress: () {},
-      ).show();
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const PaymentDistribusi(),
+        ),
+      );
     }
   }
+
+  // dialogKirim(BuildContext context, String barang) {
+  //   if (barang == null || barang == "") {
+  //     AwesomeDialog(
+  //       context: context,
+  //       dialogType: DialogType.error,
+  //       animType: AnimType.rightSlide,
+  //       title: 'Input Gagal',
+  //       btnCancelOnPress: () {},
+  //       // btnOkOnPress: () {},
+  //     ).show();
+  //   } else {
+  //     AwesomeDialog(
+  //       context: context,
+  //       dialogType: DialogType.success,
+  //       animType: AnimType.rightSlide,
+  //       title: 'Terima Kasih',
+  //       desc: barang + " akan segera di proses",
+  //       // btnCancelOnPress: () {},
+  //       btnOkOnPress: () {},
+  //     ).show();
+  //   }
+  // }
 }
