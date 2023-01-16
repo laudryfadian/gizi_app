@@ -22,7 +22,7 @@ class _IndexMasaTubuhScreenState extends State<IndexMasaTubuhScreen> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: const Text("IMT - Bayi 1 sampai 12 bulan"),
+        title: const Text("IMT"),
         actions: const [],
       ),
       body: SingleChildScrollView(
