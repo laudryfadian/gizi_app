@@ -9,11 +9,14 @@ class IndexMasaTubuhScreen extends StatefulWidget {
   State<IndexMasaTubuhScreen> createState() => _IndexMasaTubuhScreenState();
 }
 
+enum SingingCharacter { bayi, dewasa }
+
 class _IndexMasaTubuhScreenState extends State<IndexMasaTubuhScreen> {
   TextEditingController tinggiController = TextEditingController();
   TextEditingController beratController = TextEditingController();
   String hasil = "";
   String keterangan = "";
+  late SingingCharacter _character = SingingCharacter.bayi;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,6 +30,34 @@ class _IndexMasaTubuhScreenState extends State<IndexMasaTubuhScreen> {
           padding: const EdgeInsets.all(10.0),
           child: Column(
             children: [
+              // Column(
+              //   children: <Widget>[
+              ListTile(
+                title: const Text('Bayi'),
+                leading: Radio<SingingCharacter>(
+                  value: SingingCharacter.bayi,
+                  groupValue: _character,
+                  onChanged: (SingingCharacter? value) {
+                    setState(() {
+                      _character = value!;
+                    });
+                  },
+                ),
+              ),
+              ListTile(
+                title: const Text('Dewasa'),
+                leading: Radio<SingingCharacter>(
+                  value: SingingCharacter.dewasa,
+                  groupValue: _character,
+                  onChanged: (SingingCharacter? value) {
+                    setState(() {
+                      _character = value!;
+                    });
+                  },
+                ),
+              ),
+              //   ],
+              // ),
               Container(
                 padding: const EdgeInsets.all(12),
                 margin: const EdgeInsets.only(),
@@ -114,18 +145,22 @@ class _IndexMasaTubuhScreenState extends State<IndexMasaTubuhScreen> {
 
       var result = berat / tinggi;
 
-      print(result);
+      if (_character == SingingCharacter.dewasa) {
+        var tinggiDewasa = tinggi * tinggi;
+        result = berat / tinggiDewasa;
+      }
+
       if (result < 18.5) {
         setState(() {
           hasil = result.floor().toString();
           keterangan = "Berat badan kurang";
         });
-      } else if (result < 22.9) {
+      } else if (result < 25) {
         setState(() {
           hasil = result.ceil().toString();
           keterangan = "Berat badan normal";
         });
-      } else if (result < 29.9) {
+      } else if (result < 27) {
         setState(() {
           hasil = result.ceil().toString();
           keterangan = "Berat badan berlebih";
